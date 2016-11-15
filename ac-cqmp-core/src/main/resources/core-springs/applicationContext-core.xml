@@ -36,7 +36,7 @@
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <!--这三个变量读取config.properties的-->
-        <property name="url" value="${data_source_url}"/>
+        <property name="url" value="${dubbo.registry.address}"/>
         <property name="username" value="${data_source_username}"/>
         <property name="password" value="${data_source_password}"/>
 
@@ -221,7 +221,7 @@
         </constructor-arg>
         <constructor-arg index="1" ref="genericObjectPoolConfig" />
     </bean>-->
-    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+    <!--<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxIdle" value="${redis.maxIdle}" />
         <property name="testOnBorrow" value="${redis.testOnBorrow}" />
         <property name="maxTotal" value="${redis.maxTotal}" />
@@ -234,7 +234,7 @@
                 <bean class="redis.clients.jedis.JedisShardInfo">
                     <constructor-arg name="host" value="${redis.host}" />
                     <constructor-arg name="port" value="${redis.port}" />
-                    <!--<constructor-arg name="timeout" value="${redis.timeout}" /> -->
+                    &lt;!&ndash;<constructor-arg name="timeout" value="${redis.timeout}" /> &ndash;&gt;
                 </bean>
             </list>
         </constructor-arg>
@@ -243,12 +243,12 @@
         <property  name="hostName" value="${redis.host}" />
         <property  name="port"  value="${redis.port}" />
         <property  name="poolConfig"  ref="jedisPoolConfig" />
-        <!--<property name="password" value=""></property>-->
+        &lt;!&ndash;<property name="password" value=""></property>&ndash;&gt;
     </bean>
     <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
         <property name="connectionFactory"   ref="jedisConnectionFactory" />
     </bean>
-    <!--Mongodb连接池配置 -->
+    &lt;!&ndash;Mongodb连接池配置 &ndash;&gt;
     <mongo:mongo id="mongo" replica-set="${mongo.replicaSet}">
         <mongo:options connections-per-host="${mongo.connectionsPerHost}"
                        connect-timeout="${mongo.connectTimeout}" max-wait-time="${mongo.maxWaitTime}"
@@ -257,14 +257,14 @@
                        write-number="${mongo.writeNumber}" write-timeout="${mongo.riteTimeout}"
                        write-fsync="${mongo.writeFsync}"/>
     </mongo:mongo>
-    <!--MongoDB设置实例化工厂 -->
+    &lt;!&ndash;MongoDB设置实例化工厂 &ndash;&gt;
     <mongo:db-factory id="mongoDbFactory"  mongo-ref="mongo"/>
 
 
-    <!-- Mongodb模板 -->
+    &lt;!&ndash; Mongodb模板 &ndash;&gt;
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
-    </bean>
+    </bean>-->
 
     <!-- Mongodb gridFs的模板 -->
     <!--<bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">-->
@@ -312,10 +312,10 @@
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="cqmp-service" />
     <!-- 使用zookeeper注册中心暴露服务地址   端口是zookeeper 中配置的2181-->
-    <dubbo:registry  protocol="zookeeper" address="${dubbo.registry.address}"/>
+    <dubbo:registry  protocol="zookeeper" address="10.0.53.2:2181"/>
     <!-- <dubbo:registry address="multicast://224.5.6.7:1234" /> -->
     <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" />
+    <dubbo:protocol name="dubbo" port="20880" />
     <!-- 使用注解方式暴露接口 -->
     <dubbo:annotation package="com.airchina.cqmp.service.dubbo" />
 
