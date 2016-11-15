@@ -1,0 +1,11 @@
+package com.airchina.cqmp.core.demo.drools;
+
+
+rule "rule1"
+    when
+        eval(true);
+     then
+        System.out.println("11111111111");
+     end
+
+

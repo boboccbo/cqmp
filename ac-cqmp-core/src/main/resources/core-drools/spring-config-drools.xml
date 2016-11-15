@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:kie="http://drools.org/schema/kie-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://drools.org/schema/kie-spring
+       http://drools.org/schema/kie-spring.xsd">
+
+    <kie:kmodule id="kModule">
+        <kie:kbase name="kbase" packages="com.airchina.cqmp.core.demo.drools">
+            <kie:ksession name="ksessionStateless" type="stateless" />
+        </kie:kbase>
+    </kie:kmodule>
+
+
+    <bean id="kiePostProcessor" class="org.kie.spring.KModuleBeanFactoryPostProcessor"/>
+    <!-- 注解  -->
+    <!--<bean id="kiePostProcessorAnnotation" class="org.kie.spring.annotations.KModuleAnnotationPostProcessor"/>-->
+
+
+   <!-- <kie:import  releaseId-ref="ksession-releaseId" enableScanner="true" scannerInterval="300000"/>
+
+    <kie:releaseId id="ksession-releaseId" groupId="com.test" artifactId="epay-risk" version="LATEST"/>
+
+
+
+    <bean id="kiePostProcessor"  class="org.kie.spring.annotations.KModuleAnnotationPostProcessor"/>-->
+
+
+</beans>

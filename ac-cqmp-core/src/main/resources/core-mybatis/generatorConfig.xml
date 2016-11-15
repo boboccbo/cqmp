@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+    <!DOCTYPE generatorConfiguration 
+      PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+      "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+        location="C:/Users/imbobo/.m2/repository/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar" />
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+    
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        
+       <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.56.130/CQMP"
+			userId="root" password="sinosoft" >
+        </jdbcConnection>
+        
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+         <!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用MAVEN来自动生成 -->
+        <javaModelGenerator targetPackage="com.airchina.cqmp.core.pojo.activiti" targetProject="src/main/java">
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="true"/>
+            <!-- 是否允许自包-->
+            <property name="enableSubPackages" value="true" />
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        
+         <!--对应的xml mapper文件  -->
+        <sqlMapGenerator targetPackage="core-mappers" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        
+        <!-- 对应的dao接口 -->
+        <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
+                type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+                type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+                type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+        -->
+        <javaClientGenerator type="XMLMAPPER"  targetPackage="com.airchina.cqmp.core.mapper.activiti" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+
+         <!-- 这里是数据库的表名table_user 以及 POJO类的名字User -->
+        <!-- enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <table tableName="ACT_EVT_LOG" domainObjectName="ActEvtLog" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_GE_BYTEARRAY" domainObjectName="ActEgBytearray" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_GE_PROPERTY" domainObjectName="ActGeProperty" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_HI_ACTINST" domainObjectName="ActHiActinst" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_HI_ATTACHMENT" domainObjectName="ActHiAttachment" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_HI_COMMENT" domainObjectName="ActHiComment" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_HI_DETAIL" domainObjectName="ActHiDetail" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_HI_IDENTITYLINK" domainObjectName="ActHiIdentityLink" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_HI_PROCINST" domainObjectName="ActHiProcInst" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_HI_TASKINST" domainObjectName="ActHiTaskInst" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_HI_VARINST" domainObjectName="ActHiVarInst" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_ID_GROUP" domainObjectName="ActIdGroup" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_ID_INFO" domainObjectName="ActIdInfo" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_ID_MEMBERSHIP" domainObjectName="ActIdMemberShip" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_ID_USER" domainObjectName="ActIdUser" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_PROCDEF_INFO" domainObjectName="ActProcdefInfo" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RE_DEPLOYMENT" domainObjectName="ActReDeployment" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RE_MODEL" domainObjectName="ActReModel" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RE_PROCDEF" domainObjectName="ActReProcdef" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RU_EVENT_SUBSCR" domainObjectName="ActRuEventSubscr" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RU_EXECUTION" domainObjectName="ActRuExecution" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RU_IDENTITYLINK" domainObjectName="ActRuIdentityLink" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RU_JOB" domainObjectName="ActRuJob" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RU_TASK" domainObjectName="ActRuTask" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+        <table tableName="ACT_RU_VARIABLE" domainObjectName="ActRuVariable" enableCountByExample="false" enableSelectByExample="false"  enableUpdateByExample="false" enableDeleteByExample="false" >
+
+        </table>
+
+
+
+    </context>
+
+</generatorConfiguration>

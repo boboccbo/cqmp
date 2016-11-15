@@ -1,0 +1,32 @@
+<definitions
+        xmlns='http://www.omg.org/spec/BPMN/20100524/MODEL'
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns:activiti='http://activiti.org/bpmn'
+        xmlns:bpmndi='http://www.omg.org/spec/BPMN/20100524/DI'
+        xmlns:omgdc='http://www.omg.org/spec/DD/20100524/DC'
+        xmlns:omgdi='http://www.omg.org/spec/DD/20100524/DI'
+        typeLanguage='http://www.w3.org/2001/XMLSchema'
+        expressionLanguage='http://www.w3.org/1999/XPath'
+        targetNamespace='http://www.mossle.com'>
+    <!--定义一个处理流-->
+    <process id='hello' name='Hello World'>
+        <!--开始时间-->
+        <startEvent id='startnone-1' name='startnone-1' activiti:initiator='initiator'/>
+
+        <!--第一个任务-->
+        <userTask id='taskuser-1' name='hello'>
+            <humanPerformer>
+                <resourceAssignmentExpression>
+                    <formalExpression>${initiator}</formalExpression>
+                </resourceAssignmentExpression>
+            </humanPerformer>
+        </userTask>
+
+        <!--结束时间-->
+        <endEvent id='endnone-1' name='endnone-1'/>
+
+        <!--处理步骤-->
+        <sequenceFlow id='transition-1' sourceRef='startnone-1' targetRef='taskuser-1'/>
+        <sequenceFlow id='transition-2' sourceRef='taskuser-1' targetRef='endnone-1'/>
+    </process>
+</definitions>

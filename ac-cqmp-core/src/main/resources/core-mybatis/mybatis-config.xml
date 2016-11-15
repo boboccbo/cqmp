@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+	<settings>
+		<!-- 开启mybatis缓存设置,一般都是true -->
+		<setting name="cacheEnabled" value="true"/>
+		
+		<!--延迟加载的全局开关-->
+		<setting name="lazyLoadingEnabled" value="false"/>
+		
+		<!--设置超时时间-->
+		<setting name="defaultStatementTimeout" value="3000"/>
+		
+		
+		<!--本地缓存机制-->
+		<setting name="localCacheScope" value="STATEMENT"/>
+		
+		<setting name="defaultExecutorType" value="SIMPLE"/>
+		
+		
+		
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		
+		<!--允许JDBC支持自动生成主键,需要驱动的兼容-->
+		<setting name="useGeneratedKeys" value="true"/>
+	</settings>
+	
+	<plugins>
+		<plugin interceptor="com.airchina.cqmp.core.interceptors.PageInterceptor"></plugin>
+	</plugins>
+	
+	<!--<plugins>
+		<plugin interceptor = "com.github.pagehelper.PageHelper" >
+			<property name="dialect" value="mysql" />
+			&lt;!&ndash; 该参数默认为false &ndash;&gt;
+			&lt;!&ndash; 设置为true时，会将RowBounds第一个参数offset当成pageNum页码使用 &ndash;&gt;
+			&lt;!&ndash; 和startPage中的pageNum效果一样&ndash;&gt;
+			<property name="offsetAsPageNum" value ="false" />
+			&lt;!&ndash; 该参数默认为false &ndash;&gt;
+			&lt;!&ndash; 设置为true时，使用RowBounds分页会进行count查询 &ndash;&gt;
+			<property name="rowBoundsWithCount" value="false" />
+			<property name="pageSizeZero" value="true"></property>
+			<property name="reasonable" value="false"></property>
+			<property name="supportMethodsArguments" value="false"></property>
+			<property name="returnPageInfo" value="none"></property>
+		</plugin>
+	</plugins>-->
+	<!--<environments default="">
+		<environment id="">
+			<transactionManager type=""></transactionManager>
+			<dataSource type=""></dataSource>
+		</environment>
+	</environments>-->
+
+</configuration>

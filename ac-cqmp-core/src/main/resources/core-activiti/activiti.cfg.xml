@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+
+    <!--<import resource="classpath*:/core-springs/applicationContext-core.xml"></import>-->
+
+    <!-- 核心配置类，工作流配置信息 -->
+    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="databaseSchemaUpdate" value="true"/>
+        <property name="jobExecutorActivate" value="false"/>
+        <property name="activityFontName" value="宋体"/>
+        <property name="labelFontName" value="宋体"/>
+        <property name="deploymentResources" value="classpath:/core-activiti/*.bpmn20.xml" />
+    </bean>
+    <!-- 核心配置类，工作流配置信息 -->
+   <!-- <bean id="processEngineConfiguration"
+          class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+
+        &lt;!&ndash; 数据源配置 &ndash;&gt;
+         <property name="databaseType" value="h2"></property>
+        &lt;!&ndash; 自动创建表 &ndash;&gt;
+        <property name="databaseSchemaUpdate" value="true"></property>
+        &lt;!&ndash; JobExecutor的自动启动 &ndash;&gt;
+        <property name="jobExecutorActivate" value="false"></property>
+        <property name="history" value="full"></property>
+
+        &lt;!&ndash; 配置自定义缓存 &ndash;&gt;
+        &lt;!&ndash; <property name="processDefinitionCache">
+            <bean class="com.vclouds.workflow.cache.MyCache" />
+        </property> &ndash;&gt;
+
+        &lt;!&ndash; 向表达式暴露bean，不写则为暴露所有，设置map值则表示暴露map中存在的bean &ndash;&gt;
+        &lt;!&ndash; <property name="beans">
+            <map>
+                <entry key="printer" value-ref="printer" />
+            </map>
+        </property> &ndash;&gt;
+
+        &lt;!&ndash; 邮件服务器配置 &ndash;&gt;
+        &lt;!&ndash; <property name="mailServerHost" value="smtp.qq.com"></property>
+        <property name="mailServerUsername" value=""></property>
+        <property name="mailServerPassword" value=""></property>
+        <property name="mailServerPort" value="465"></property>
+        <property name="mailServerDefaultFrom" value=""></property>
+        <property name="mailServerUseSSL" value="true"></property>
+        <property name="useTLS"></property> &ndash;&gt;
+    </bean>-->
+
+
+    <!-- 使用表达式调用服务 -->
+    <!--<bean id="execu" class="com.vclouds.servicetest.MyDelegate"></bean>-->
+
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
+    </bean>
+
+    <bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService"/>
+    <bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService"/>
+    <bean id="taskService" factory-bean="processEngine" factory-method="getTaskService"/>
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/>
+    <bean id="formService" factory-bean="processEngine" factory-method="getFormService" />
+    <bean id="identityService" factory-bean="processEngine" factory-method="getIdentityService" />
+
+
+</beans>
