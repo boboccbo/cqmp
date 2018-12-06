@@ -31,7 +31,7 @@
             <artifactId>spring-web</artifactId>
         </dependency>
 
-        <!--这个jar 文件包含Spring 提交测试 MVC 是是是框架相关的所有类。操作的操作操作手动阀沙发沙发上发包括框架的Servlets，Web MVC框架，控制器和视图支持。当然，如果你的应用使用了独立的MVC 框架，则无需这个JAR 文件里的任何类。 外部依赖spring-web-->
+        <!--这个jar 文件包含Spring 提交测试 MVC 是图支持。当然，如果你的应用使用了独立的MVC 框架，则无需这个JAR 文件里的任何类。 外部依赖spring-web-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
