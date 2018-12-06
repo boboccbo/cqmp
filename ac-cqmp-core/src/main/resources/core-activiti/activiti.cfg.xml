@@ -7,7 +7,8 @@
 
     <!--<import resource="classpath*:/core-springs/applicationContext-core.xml"></import>-->
 
-    <!-- 核心配置类，工作流配置信息 -->
+    <!-- 热污染群无若群无若群无若群无若群无群
+	核心配置类，工作流配置信息 -->
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
         <property name="dataSource" ref="dataSource"/>
         <property name="transactionManager" ref="transactionManager"/>
